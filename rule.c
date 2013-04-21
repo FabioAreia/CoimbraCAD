@@ -17,13 +17,13 @@ int main(int argc, char *argv[]) {
     char string1[CHUNK];
     int blocoin[10];
     int blocorule[11];
-    
+
     struct linhainput tabela[100000];
 
     FILE *in = fopen("nome_ficheiro_input.csv", "r");
     FILE *rule = fopen("nome_ficheiro_rules.csv", "r");
 
-    
+
     if (in == NULL) {
         perror("File open error");
         printf("Não leu nem o 1");
@@ -50,22 +50,27 @@ int main(int argc, char *argv[]) {
 
 
     if (in) {
-        int linhaCSV =0;
-        while(!feof(in)){
-        fgets(buf, sizeof (buf), in);
-        char *texto = strtok(buf, ",");
-        printf(texto);
-        blocoin[0]=atoi(texto);
+        int linhaCSV = 0;
+        while (!feof(in)) {
+            fgets(buf, sizeof (buf), in);
+            char *texto = strtok(buf, ",");
 
-        tabela[linhaCSV].numInput[0] = atoi(texto);
-        
-        printf("\n");
-        texto = strtok(NULL, ",");
-        printf(texto);
-        printf("\n");
-        texto = strtok(NULL, ",");
-        printf(texto);
-        linhaCSV++;
+            printf(texto);
+            printf("\n");
+            blocoin[0] = atoi(texto);
+            tabela[linhaCSV].numInput[0] = atoi(texto);
+
+            int i = 0;
+
+            for (i = 1; i < 9; i++) {
+                texto = strtok(NULL, ",");
+                printf(texto);
+                tabela[linhaCSV].numInput[i] = atoi(texto);
+                printf("\n");
+            }
+
+
+            linhaCSV++;
         }
 
         if (ferror(in)) {
@@ -84,8 +89,8 @@ int main(int argc, char *argv[]) {
 
 
 
-    printf("\nO blocoin tem o valor %d" ,tabela[1].numInput[0]);
-    
+    printf("\nO blocoin tem o valor %d", tabela[1].numInput[4]);
+
     return 0;
 }
 
