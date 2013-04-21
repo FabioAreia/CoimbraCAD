@@ -65,6 +65,7 @@ int main(int argc, char *argv[]) {
         printf("\n");
         texto = strtok(NULL, ",");
         printf(texto);
+        linhaCSV++;
         }
 
         if (ferror(in)) {
@@ -83,7 +84,7 @@ int main(int argc, char *argv[]) {
 
 
 
-    printf("\nO blocoin tem o valor %d" ,tabela[0].numInput[0]);
+    printf("\nO blocoin tem o valor %d" ,tabela[1].numInput[0]);
     
     return 0;
 }
