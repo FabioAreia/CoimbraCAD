@@ -11,6 +11,7 @@ int main(int argc, char *argv[]) {
 
 #define CHUNK 1024 /* read 1024 bytes at a time */
 #define NRCELLSINPUT 10
+#define NRCELLSRULES 11
 
     char buf[CHUNK];
     size_t nread;
@@ -21,6 +22,7 @@ int main(int argc, char *argv[]) {
     int blocorule[11];
 
     struct linhainput tabela[100000];
+    struct linhaRule tabelaRules[20000];
 
     FILE *in = fopen("nome_ficheiro_input.csv", "r");
     FILE *rule = fopen("nome_ficheiro_rules.csv", "r");
@@ -75,20 +77,47 @@ int main(int argc, char *argv[]) {
 
         if (ferror(in)) {
         }
-        printf("\n");
+        /*
+                printf("\n");
+         */
         fclose(in);
     }
 
     if (rule) {
-        while ((nread = fread(buf, 1, sizeof buf, rule)) > 0)
-            fwrite(buf, 1, nread, stdout);
-        if (ferror(rule)) {
+        int linhaCSV = 0;
+        while (!feof(rule)) {
+            fgets(buf, sizeof (buf), rule);
+            char *texto = strtok(buf, ",");
+            
+            printf(texto);
+            printf("\n");
+
+            tabelaRules[linhaCSV].numRule[0] = atoi(texto);
+            int i = 0;
+
+            for (i = 1; i < NRCELLSRULES; i++) {
+                texto = strtok(NULL, ",");
+                printf(texto);
+                tabelaRules[linhaCSV].numRule[i] = atoi(texto);
+                printf("\n");
+            }
+            linhaCSV++;
+
         }
+        
+                if (ferror(in)) {
+        }
+        /*
+                printf("\n");
+         */
+
+
         fclose(rule);
     }
 
 
-    printf("\nO blocoin tem o valor %d", tabela[2].numInput[1]);
+    printf("\nUm dos valores da tabela de input é %d", tabela[2].numInput[1]);
+    printf("\nUm dos valores da tabela de rules é %d", tabelaRules[0].numRule[4]);
 
     return 0;
 }

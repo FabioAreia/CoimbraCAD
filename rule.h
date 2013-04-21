@@ -10,10 +10,10 @@ typedef struct Tabelainput{
 	linhainput table[10000000];
 }*Tabelainput;
 
-typedef struct ruleinput{
+typedef struct linhaRule{
 	int numRule[11];
-}*ruleinput;
+}*linhaRule;
 
 typedef struct TabelaRule{
-	ruleinput tablerule[2000000];
+	linhaRule tablerule[2000000];
 }*TabelaRule;
