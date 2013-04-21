@@ -10,6 +10,8 @@ int i;
 int main(int argc, char *argv[]) {
 
 #define CHUNK 1024 /* read 1024 bytes at a time */
+#define NRCELLS 10
+
     char buf[CHUNK];
     size_t nread;
     char texto[CHUNK];
@@ -62,14 +64,12 @@ int main(int argc, char *argv[]) {
 
             int i = 0;
 
-            for (i = 1; i < 9; i++) {
+            for (i = 1; i < NRCELLS; i++) {
                 texto = strtok(NULL, ",");
                 printf(texto);
                 tabela[linhaCSV].numInput[i] = atoi(texto);
                 printf("\n");
             }
-
-
             linhaCSV++;
         }
 
@@ -88,8 +88,7 @@ int main(int argc, char *argv[]) {
     }
 
 
-
-    printf("\nO blocoin tem o valor %d", tabela[1].numInput[4]);
+    printf("\nO blocoin tem o valor %d", tabela[2].numInput[1]);
 
     return 0;
 }
