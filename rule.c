@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     int blocoin[10];
     int blocorule[11];
     
-    Tabelainput tabelainput;
+    struct linhainput tabela[100000];
 
     FILE *in = fopen("nome_ficheiro_input.csv", "r");
     FILE *rule = fopen("nome_ficheiro_rules.csv", "r");
@@ -50,11 +50,15 @@ int main(int argc, char *argv[]) {
 
 
     if (in) {
+        int linhaCSV =0;
         while(!feof(in)){
         fgets(buf, sizeof (buf), in);
         char *texto = strtok(buf, ",");
         printf(texto);
         blocoin[0]=atoi(texto);
+
+        tabela[linhaCSV].numInput[0] = atoi(texto);
+        
         printf("\n");
         texto = strtok(NULL, ",");
         printf(texto);
@@ -79,7 +83,7 @@ int main(int argc, char *argv[]) {
 
 
 
-    printf("\nO blocoin tem o valor %d" ,blocoin[0]);
+    printf("\nO blocoin tem o valor %d" ,tabela[0].numInput[0]);
     
     return 0;
 }
