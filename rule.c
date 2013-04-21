@@ -23,6 +23,7 @@ int main(int argc, char *argv[]) {
     FILE *in = fopen("nome_ficheiro_input.csv", "r");
     FILE *rule = fopen("nome_ficheiro_rules.csv", "r");
 
+    
     if (in == NULL) {
         perror("File open error");
         printf("Não leu nem o 1");
