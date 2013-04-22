@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     struct linhainput tabela[100000];
     struct linhaRule tabelaRules[20000];
 
-    FILE *in = fopen("nome_ficheiro_input.csv", "r");
+    FILE *in = fopen("trans_day_0.csv", "r");
     FILE *rule = fopen("nome_ficheiro_rules.csv", "r");
 
 
@@ -116,7 +116,7 @@ int main(int argc, char *argv[]) {
     }
 
 
-    printf("\nUm dos valores da tabela de input é %d", tabela[2].numInput[1]);
+    printf("\nUm dos valores da tabela de input é %d", tabela[3].numInput[2]);
     printf("\nUm dos valores da tabela de rules é %d", tabelaRules[0].numRule[4]);
 
     return 0;
