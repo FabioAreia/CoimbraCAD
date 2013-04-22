@@ -21,12 +21,18 @@ int main(int argc, char *argv[]) {
     int blocoin[10];
     int blocorule[11];
 
+/*
     struct linhainput tabela[100000];
+*/
     struct linhaRule tabelaRules[20000];
+    
+    struct linhainput *tabela;
+    tabela = malloc(sizeof (linhainput));
 
     FILE *in = fopen("trans_day_0.csv", "r");
     FILE *rule = fopen("nome_ficheiro_rules.csv", "r");
 
+    
 
     if (in == NULL) {
         perror("File open error");
@@ -54,9 +60,11 @@ int main(int argc, char *argv[]) {
 
 
     if (in) {
+        
         int linhaCSV = 0;
         while (!feof(in)) {
             fgets(buf, sizeof (buf), in);
+            tabela =malloc (sizeof (linhainput));
             char *texto = strtok(buf, ",");
 
             printf(texto);
@@ -121,6 +129,7 @@ int main(int argc, char *argv[]) {
     printf("\nUm dos valores da tabela de input é %d", tabela[3].numInput[2]);
     printf("\nUm dos valores da tabela de rules é %d", tabelaRules[0].numRule[4]);
 
+    free(tabela);
     return 0;
 }
 
