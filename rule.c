@@ -75,10 +75,12 @@ int main(int argc, char *argv[]) {
             linhaCSV++;
         }
 
+        
+        
         if (ferror(in)) {
         }
         /*
-                printf("\n");
+                printf("\n");");");
          */
         fclose(in);
     }
